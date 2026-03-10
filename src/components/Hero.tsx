@@ -66,16 +66,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero-social absolute right-6 top-1/2 hidden -translate-y-1/2 flex-col gap-3 text-white/70 md:flex">
-          {["IG", "FB", "YT"].map((item) => (
-            <span
-              key={item}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-[10px] font-semibold tracking-[0.2em] uppercase backdrop-blur-sm"
-            >
-              {item}
-            </span>
-          ))}
-        </div>
+        
       </div>
     </section>
   );
