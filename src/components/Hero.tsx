@@ -1,17 +1,61 @@
+"use client";
+
 import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
+const slides = [
+  {
+    src: "/image/komodo-island.jpg",
+    alt: "Komodo Island's rugged coastline and turquoise waters",
+  },
+  {
+    src: "/image/raja-ampat 2.jpg",
+    alt: "Turquoise lagoons in Raja Ampat",
+  },
+  {
+    src: "/image/borobudur.jpg",
+    alt: "Ancient Borobudur temple at sunset",
+  },
+];
 
 export default function Hero() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % slides.length);
+    }, 5500);
+    return () => clearInterval(interval);
+  }, []);
+
+  const activeSlide = slides[activeIndex];
+
   return (
     <section className="relative h-screen w-full overflow-hidden text-white">
-      <Image
-        src="/image/bromo-2.jpg"
-        alt="Bromo mountain at sunrise"
-        fill
-        priority
-        className="object-cover"
-      />
+      <div className="absolute inset-0">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeSlide.src}
+            className="absolute inset-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+          >
+            <Image
+              src={activeSlide.src}
+              alt={activeSlide.alt}
+              fill
+              priority
+              className="object-cover"
+            />
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
-      
+      <div className="absolute inset-0 bg-linear-to-r from-black/65 via-black/25 to-black/10" />
+      <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-black/60" />
 
       <div className="relative z-10 flex h-full items-center">
         <div className="mx-auto w-full max-w-6xl px-6">
@@ -21,8 +65,7 @@ export default function Hero() {
             </div>
 
             <h1 className="hero-title mt-6 text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
-              Experience the
-              <span className="block text-white/90">Magic of Bromo</span>
+              Explore Nusantara
             </h1>
 
             <p className="hero-subtitle mt-5 max-w-lg text-sm text-white/75 sm:text-base lg:text-lg">
@@ -65,8 +108,6 @@ export default function Hero() {
             </div>
           </div>
         </div>
-
-        
       </div>
     </section>
   );
