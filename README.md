@@ -1,36 +1,176 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🇮🇩 Explore Nusantara
 
-## Getting Started
+A modern travel landing page showcasing the beauty of Indonesian destinations.
+Built with **Next.js**, **TailwindCSS**, **GSAP**, and **Framer Motion** to create a smooth and immersive experience.
 
-First, run the development server:
+The goal of this project is to present Indonesia's iconic travel destinations in a modern interactive interface.
+
+---
+
+# ✨ Features
+
+* Modern travel landing page
+* Interactive destination cards
+* Smooth scroll animations
+* GSAP cinematic hero animations
+* Framer Motion scroll reveal
+* Interactive Indonesia map
+* Responsive layout
+
+---
+
+# 🧰 Tech Stack
+
+Frontend
+
+* Next.js (App Router)
+* React
+* TailwindCSS
+
+Animation
+
+* GSAP
+* Framer Motion
+
+Utilities
+
+* React Icons
+* clsx
+
+---
+
+# 📦 Installation
+
+Clone repository
+
+```bash
+git clone https://github.com/yourusername/explore-nusantara.git
+cd explore-nusantara
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Install animation libraries
+
+```bash
+npm install gsap framer-motion
+```
+
+Run development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+# 📁 Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src
+│
+├─ app
+│   ├─ layout.tsx
+│   └─ page.tsx
+│
+├─ components
+│   ├─ Navbar.tsx
+│   ├─ Hero.tsx
+│   ├─ DestinationCard.tsx
+│   ├─ ExperienceCard.tsx
+│   ├─ ResortCard.tsx
+│   ├─ BlogCard.tsx
+│   └─ Footer.tsx
+│
+├─ sections
+│   ├─ Destinations.tsx
+│   ├─ Experiences.tsx
+│   ├─ MapSection.tsx
+│   ├─ Resorts.tsx
+│   ├─ Blog.tsx
+│   └─ CTA.tsx
+│
+├─ data
+│   └─ destinations.ts
+│
+├─ lib
+│   └─ utils.ts
+│
+└─ styles
+   └─ globals.css
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# 🖼️ Assets
 
-## Deploy on Vercel
+Images are stored in the public directory.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+public
+│
+├─ images
+│  ├─ hero
+│  ├─ destinations
+│  ├─ experiences
+│  ├─ hotels
+│  └─ blog
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+# 🗺️ Sections
+
+The landing page layout follows this structure
+
+```
+Navbar
+Hero
+Popular Destinations
+Travel Experiences
+Interactive Indonesia Map
+Featured Resorts
+Travel Blog
+CTA
+Footer
+```
+
+---
+
+# 🎨 Animations
+
+GSAP
+
+* Hero entrance animation
+* Scroll-triggered parallax
+
+Framer Motion
+
+* Card reveal on scroll
+* Hover micro-interactions
+* Staggered grid animations
+
+---
+
+# 🚀 Future Improvements
+
+* Add destination search
+* Add filtering by region
+* Interactive Indonesia map navigation
+* CMS integration
+
+---
+
+# 📌 Goal
+
+This project is built as a portfolio project to demonstrate modern frontend development techniques and UI storytelling for travel platforms.
