@@ -5,35 +5,36 @@ import { useState } from "react";
 
 const navLinks = [
   { label: "Home", href: "#" },
-  { label: "Destinations", href: "#destinations" },
-  { label: "Experiences", href: "#experiences" },
-  { label: "Blog", href: "#blog" },
+  { label: "Services", href: "#services" },
+  { label: "Tour", href: "#tour" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 w-full">
+    <nav className="fixed top-0 left-0 z-50 w-full pt-4">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
-        <div className="mt-4 rounded-2xl border border-white/20 bg-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.15)] backdrop-blur-md transition">
-          <div className="flex items-center justify-between px-4 py-3 md:px-6">
+        <div className="rounded-full border border-white/15 bg-white/5 shadow-[0_10px_30px_rgba(0,0,0,0.15)] backdrop-blur-md">
+          <div className="flex items-center justify-between px-5 py-3 md:px-7">
             <div className="flex flex-1 items-center">
               <Link
                 href="#"
-                className="text-base font-semibold tracking-wide text-white transition hover:text-sky-400"
+                className="text-sm font-semibold tracking-[0.2em] text-white transition hover:text-white/80"
               >
-                Explore Nusantara
+                EXPLORE NUSANTARA
               </Link>
             </div>
 
             <div className="hidden flex-1 items-center justify-center md:flex">
-              <div className="flex items-center gap-6 text-sm font-medium text-white/90">
+              <div className="flex items-center gap-6 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/80">
                 {navLinks.map((link) => (
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="transition hover:text-sky-400"
+                    className="transition hover:text-white"
                   >
                     {link.label}
                   </Link>
@@ -44,9 +45,9 @@ export default function Navbar() {
             <div className="flex flex-1 items-center justify-end gap-3">
               <Link
                 href="#cta"
-                className="hidden rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:border-sky-400 hover:text-sky-400 md:inline-flex"
+                className="hidden rounded-full border border-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/90 transition hover:bg-white/10 md:inline-flex"
               >
-                Explore
+                Schedule Now
               </Link>
 
               <button
@@ -54,7 +55,7 @@ export default function Navbar() {
                 aria-label="Toggle navigation menu"
                 aria-expanded={open}
                 onClick={() => setOpen((prev) => !prev)}
-                className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 p-2 text-white transition hover:border-sky-400 hover:text-sky-400 md:hidden"
+                className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 p-2 text-white transition hover:bg-white/20 md:hidden"
               >
                 <span className="sr-only">Open menu</span>
                 <div className="flex flex-col gap-1">
@@ -65,29 +66,29 @@ export default function Navbar() {
               </button>
             </div>
           </div>
+        </div>
 
-          <div
-            className={`md:hidden ${open ? "block" : "hidden"} border-t border-white/10 px-4 py-4`}
-          >
-            <div className="flex flex-col gap-3 text-sm font-medium text-white/90">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="transition hover:text-sky-400"
-                  onClick={() => setOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
+        <div
+          className={`md:hidden ${open ? "block" : "hidden"} mt-3 rounded-2xl border border-white/15 bg-white/5 px-5 py-4 text-white/90 backdrop-blur-md`}
+        >
+          <div className="flex flex-col gap-3 text-sm font-medium">
+            {navLinks.map((link) => (
               <Link
-                href="#cta"
-                className="mt-2 inline-flex w-fit rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:border-sky-400 hover:text-sky-400"
+                key={link.label}
+                href={link.href}
+                className="transition hover:text-white"
                 onClick={() => setOpen(false)}
               >
-                Explore
+                {link.label}
               </Link>
-            </div>
+            ))}
+            <Link
+              href="#cta"
+              className="mt-2 inline-flex w-fit rounded-full border border-white/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-white/10"
+              onClick={() => setOpen(false)}
+            >
+              Schedule Now
+            </Link>
           </div>
         </div>
       </div>
