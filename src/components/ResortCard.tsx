@@ -26,14 +26,14 @@ export default function ResortCard({
 }: ResortCardProps) {
   return (
     <motion.div
-      className={`group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_12px_30px_rgba(15,23,42,0.08)] transition-transform duration-300 hover:scale-[1.01] ${className ?? ""}`}
+      className={`group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_12px_30px_rgba(15,23,42,0.08)] transition-transform duration-700 hover:scale-[1.01] ${className ?? ""}`}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{
-        duration: 0.6,
+        duration: 0.7,
         ease: "easeOut",
-        delay: typeof index === "number" ? index * 0.1 : 0,
+        delay: typeof index === "number" ? index * 0.15 : 0,
       }}
     >
       <Image

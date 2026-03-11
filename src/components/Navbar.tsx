@@ -4,11 +4,10 @@ import Link from "next/link";
 import { useState } from "react";
 
 const navLinks = [
-  { label: "Home", href: "#" },
-  { label: "Services", href: "#services" },
-  { label: "Tour", href: "#tour" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "#home" },
+  { label: "Destinations", href: "#destinations" },
+  { label: "Experiences", href: "#experiences" },
+  { label: "Blog", href: "#blog" },
 ];
 
 export default function Navbar() {

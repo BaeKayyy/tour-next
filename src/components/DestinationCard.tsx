@@ -27,9 +27,9 @@ export default function DestinationCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{
-        duration: 0.6,
+        duration: 0.7,
         ease: "easeOut",
-        delay: typeof index === "number" ? index * 0.1 : 0,
+        delay: typeof index === "number" ? index * 0.15 : 0,
       }}
     >
       <Image

@@ -64,6 +64,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
+      id="home"
       className="relative h-screen w-full overflow-hidden text-white"
     >
       <div ref={backgroundRef} className="absolute inset-0">
