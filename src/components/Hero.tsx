@@ -2,7 +2,9 @@
 
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const slides = [
   {
@@ -21,6 +23,8 @@ const slides = [
 
 export default function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const backgroundRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -29,11 +33,40 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const context = gsap.context(() => {
+      const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+      timeline
+        .from(".hero-title", { autoAlpha: 0, y: 24, duration: 1 })
+        .from(".hero-subtitle", { autoAlpha: 0, y: 20, duration: 0.9 }, "-=0.6")
+        .from(".hero-cta", { autoAlpha: 0, scale: 0.95, duration: 0.8 }, "-=0.5");
+
+      if (backgroundRef.current && sectionRef.current) {
+        gsap.to(backgroundRef.current, {
+          y: 60,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
+    }, sectionRef);
+
+    return () => context.revert();
+  }, []);
+
   const activeSlide = slides[activeIndex];
 
   return (
-    <section className="relative h-screen w-full overflow-hidden text-white">
-      <div className="absolute inset-0">
+    <section
+      ref={sectionRef}
+      className="relative h-screen w-full overflow-hidden text-white"
+    >
+      <div ref={backgroundRef} className="absolute inset-0">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeSlide.src}

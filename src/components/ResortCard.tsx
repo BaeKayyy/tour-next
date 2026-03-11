@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 type ResortCardProps = {
   name: string;
@@ -8,6 +11,7 @@ type ResortCardProps = {
   reviews: string;
   image: string;
   className?: string;
+  index?: number;
 };
 
 export default function ResortCard({
@@ -18,10 +22,19 @@ export default function ResortCard({
   reviews,
   image,
   className,
+  index,
 }: ResortCardProps) {
   return (
-    <div
+    <motion.div
       className={`group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_12px_30px_rgba(15,23,42,0.08)] transition-transform duration-300 hover:scale-[1.01] ${className ?? ""}`}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{
+        duration: 0.6,
+        ease: "easeOut",
+        delay: typeof index === "number" ? index * 0.1 : 0,
+      }}
     >
       <Image src={image} alt={name} fill className="object-cover" />
       <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
@@ -41,6 +54,6 @@ export default function ResortCard({
           <span className="font-semibold">{price}</span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

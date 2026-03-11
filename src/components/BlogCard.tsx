@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 type BlogCardProps = {
   category: string;
@@ -7,6 +10,7 @@ type BlogCardProps = {
   description: string;
   image: string;
   href: string;
+  index?: number;
 };
 
 export default function BlogCard({
@@ -15,9 +19,20 @@ export default function BlogCard({
   description,
   image,
   href,
+  index,
 }: BlogCardProps) {
   return (
-    <article className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_12px_30px_rgba(15,23,42,0.08)] transition-transform duration-300 hover:scale-[1.01]">
+    <motion.article
+      className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_12px_30px_rgba(15,23,42,0.08)] transition-transform duration-300 hover:scale-[1.01]"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{
+        duration: 0.6,
+        ease: "easeOut",
+        delay: typeof index === "number" ? index * 0.1 : 0,
+      }}
+    >
       <div className="relative h-48 w-full overflow-hidden">
         <Image
           src={image}
@@ -41,6 +56,6 @@ export default function BlogCard({
           <span className="text-sm">-&gt;</span>
         </Link>
       </div>
-    </article>
+    </motion.article>
   );
 }

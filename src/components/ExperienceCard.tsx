@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 type ExperienceCardProps = {
   title: string;
@@ -6,6 +9,7 @@ type ExperienceCardProps = {
   image: string;
   tag?: string;
   className?: string;
+  index?: number;
 };
 
 export default function ExperienceCard({
@@ -14,10 +18,19 @@ export default function ExperienceCard({
   image,
   tag,
   className,
+  index,
 }: ExperienceCardProps) {
   return (
-    <div
+    <motion.div
       className={`experience-card group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-[0_18px_40px_rgba(0,0,0,0.18)] backdrop-blur-sm ${className ?? ""}`}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{
+        duration: 0.6,
+        ease: "easeOut",
+        delay: typeof index === "number" ? index * 0.1 : 0,
+      }}
     >
       <Image
         src={image}
@@ -41,6 +54,6 @@ export default function ExperienceCard({
         </p>
         <h3 className="mt-2 text-lg font-semibold text-white">{title}</h3>
       </div>
-    </div>
+    </motion.div>
   );
 }

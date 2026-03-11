@@ -52,15 +52,18 @@ export default function Resorts() {
 
           <ResortCard
             {...resorts[0]}
+            index={0}
             className="h-55 sm:h-75"
           />
 
           <ResortCard
             {...resorts[1]}
+            index={1}
             className="h-55 sm:h-75"
           />
           <ResortCard
             {...resorts[2]}
+            index={2}
             className="h-55 sm:h-75"
           />
         </div>

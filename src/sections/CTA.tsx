@@ -4,7 +4,7 @@ export default function CTA() {
   return (
     <section id="cta" className="relative w-full overflow-hidden py-20">
       <Image
-        src="/images/cta/cta-landscape.jpg"
+        src="/image/panorama.jpg"
         alt="Travel landscape in Indonesia"
         fill
         className="object-cover"

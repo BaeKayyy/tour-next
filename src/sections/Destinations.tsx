@@ -1,3 +1,5 @@
+
+
 import DestinationCard from "../components/DestinationCard";
 
 const destinations = [
@@ -64,8 +66,12 @@ export default function Destinations() {
         </div>
 
         <div className="mt-10 grid gap-5 lg:grid-cols-3">
-          {destinations.map((destination) => (
-            <DestinationCard key={destination.title} {...destination} />
+          {destinations.map((destination, index) => (
+            <DestinationCard
+              key={destination.title}
+              index={index}
+              {...destination}
+            />
           ))}
         </div>
       </div>
